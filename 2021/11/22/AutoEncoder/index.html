@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>AutoEncoder | 威士忌配可乐</title><meta name="keywords" content="机器学习,原理,数据处理"><meta name="author" content="LYZ"><meta name="copyright" content="LYZ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="AutoEncoder自编码 AutoEncoder 是一种无监督学习的算法，他利用反向传播算法，让目标值等于输入值。 比如对于一个神经网络，输入一张图片，通过一个 Encoder 神经网络，输出一个比较 “浓缩的”feature map。之后将这个 feature map 通过一个 Decoder 网络，结果又将这张图片恢复。  如果说我们的数据集特别大，对于直接训练而言性能肯定较低。但如果我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoEncoder">
+<meta property="og:url" content="http://example.com/2021/11/22/AutoEncoder/index.html">
+<meta property="og:site_name" content="威士忌配可乐">
+<meta property="og:description" content="AutoEncoder自编码 AutoEncoder 是一种无监督学习的算法，他利用反向传播算法，让目标值等于输入值。 比如对于一个神经网络，输入一张图片，通过一个 Encoder 神经网络，输出一个比较 “浓缩的”feature map。之后将这个 feature map 通过一个 Decoder 网络，结果又将这张图片恢复。  如果说我们的数据集特别大，对于直接训练而言性能肯定较低。但如果我们">
+<meta property="og:locale">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/24/oPnk60.jpg">
+<meta property="article:published_time" content="2021-11-22T09:07:24.000Z">
+<meta property="article:modified_time" content="2022-03-07T10:20:18.000Z">
+<meta property="article:author" content="LYZ">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="原理">
+<meta property="article:tag" content="数据处理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/11/24/oPnk60.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/11/22/AutoEncoder/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AutoEncoder',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-07 18:20:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://z3.ax1x.com/2021/11/24/oPnk60.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">威士忌配可乐</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AutoEncoder</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-11-22T09:07:24.000Z" title="Created 2021-11-22 17:07:24">2021-11-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-03-07T10:20:18.000Z" title="Updated 2022-03-07 18:20:18">2022-03-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AutoEncoder"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="AutoEncoder"><a href="#AutoEncoder" class="headerlink" title="AutoEncoder"></a>AutoEncoder</h1><p>自编码 AutoEncoder 是一种无监督学习的算法，他利用反向传播算法，让目标值等于输入值。</p>
+<p>比如对于一个神经网络，输入一张图片，通过一个 Encoder 神经网络，输出一个比较 “浓缩的”feature map。之后将这个 feature map 通过一个 Decoder 网络，结果又将这张图片恢复。</p>
+<p><img src="https://z3.ax1x.com/2021/11/21/IjlLw9.png" alt="IjlLw9.png"></p>
+<p>如果说我们的数据集特别大，对于直接训练而言性能肯定较低。但如果我们对数据特征进行提取，缩减输入信息量，学习起来就相对轻松。</p>
+<h2 id="简单模型"><a href="#简单模型" class="headerlink" title="简单模型"></a>简单模型</h2><p>下面是一个AutoEncoder的三层模型，其中 $W^* &#x3D; W^T$ </p>
+<p><img src="https://z3.ax1x.com/2021/11/21/IjGU6f.png" alt="IjGU6f.png"></p>
+<p>2010年，Vincent 在论文中表明，只用单组W就可以，所以W*没有必要去训练。</p>
+<p><strong><a target="_blank" rel="noopener" href="http://jmlr.org/papers/volume11/vincent10a/vincent10a.pdf">http://jmlr.org/papers/volume11/vincent10a/vincent10a.pdf</a></strong></p>
+<p>如果实数作为输入，损失函数为  $L(f(x)) &#x3D; {1\over2}\sum_{k}(\hat x_k - x_k)^2$</p>
+<h2 id="PCA-和-AutoEncoder"><a href="#PCA-和-AutoEncoder" class="headerlink" title="PCA 和 AutoEncoder"></a>PCA 和 AutoEncoder</h2><p><strong>PCA又叫主成分分析法，是将n维特征映射到k维上</strong>，本质上是个线性变化。而AutoEncoder是基于DNN的，因为有激活函数，所以可以进行非线性变换。下图是MNIST数据集经过 PCA 和AutoEncoder 降维再还原后的效果。</p>
+<p><img src="https://z3.ax1x.com/2021/11/21/Ijtim8.png" alt="Ijtim8.png"></p>
+<p>可以看到AutoEncoder效果是明显优于PCA。</p>
+<h2 id="Dropout-AutoEncoder"><a href="#Dropout-AutoEncoder" class="headerlink" title="Dropout AutoEncoder"></a>Dropout AutoEncoder</h2><p>Dropout AutoEncoder是不断让神经元死亡以达到缩减特征的效果。</p>
+<p>下图是一个简单的神经元图。</p>
+<p><img src="https://z3.ax1x.com/2021/11/21/IjtvHU.png" alt="IjtvHU.png"></p>
+<h2 id="Adversarial-AutoEncoders"><a href="#Adversarial-AutoEncoders" class="headerlink" title="Adversarial AutoEncoders"></a>Adversarial AutoEncoders</h2><p>Adversarial AutoEncoders是利用GAN网络的思想，利用一个生成器 G 和一个判别器 D 进行对抗学习，以区分 Real data 和 Fake data。</p>
+<p>具体思路是这样的，我现在需要一个满足 p(z) 概率分布的 z 向量，但是 z 实际上满足 q(z) 分布。那么我就首先生成一个满足 p(z) 分布的 z′ 向量，打上 Real data 的标签，然后将 z 向量打上 Fake data 的标签，将它们俩送入判别器 D。判别器 D 通过不断学习，预测输入 input 是来自于 Real data（服从预定义的 p(z) 分布）还是 Fake data（服从 q(z) 分布）。由于这里的 p(z) 可以是我们定义的任何一个概率分布，因此整个对抗学习的过程实际上可以认为是通过调整 Encoder 不断让其产生数据的概率分布 q(z) 接近我们预定义的 p(z)。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://z3.ax1x.com/2021/11/21/IjUmLV.png" alt="IjUmLV.png"></h2><h2 id="AutoEncoder代码实现"><a href="#AutoEncoder代码实现" class="headerlink" title="AutoEncoder代码实现"></a>AutoEncoder代码实现</h2><p><strong><a target="_blank" rel="noopener" href="https://github.com/JiaZhengJingXianSheng/AutoEncoder">https://github.com/JiaZhengJingXianSheng/AutoEncoder</a></strong></p>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><p>下面这张图是原本mnist数据集的图。</p>
+<p><img src="https://z3.ax1x.com/2021/11/22/IzPy0f.png" alt="IzPy0f.png"></p>
+<p>在epochs &#x3D; 1 情况下，在经过编码器编码，解码器恢复的结果为下图。</p>
+<p><img src="https://z3.ax1x.com/2021/11/22/IzP678.png" alt="IzP678.png"></p>
+<p>因为DNN是有损失的，所以在恢复的过程中肯定是有部分信息丢失。但可以通过训练次数的提升，来减少信息丢失，下图为epochs &#x3D; 50 情况下恢复出来的结果，可以看到效果明显优于上图。</p>
+<p><img src="https://z3.ax1x.com/2021/11/22/IzkRhD.png" alt="IzkRhD.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">LYZ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/11/22/AutoEncoder/">http://example.com/2021/11/22/AutoEncoder/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="/tags/%E5%8E%9F%E7%90%86/">原理</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a></div><div class="post_share"><div class="social-share" data-image="https://z3.ax1x.com/2021/11/24/oPnk60.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/24/Seq2Seq/"><img class="prev-cover" src="https://z3.ax1x.com/2021/11/24/oPnCfs.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Seq2Seq</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/18/CMake%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"><img class="next-cover" src="https://z3.ax1x.com/2021/11/24/oPn7HU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux CMake工程目录结构</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/11/12/%E4%B8%8D%E5%8F%98%E9%A3%8E%E9%99%A9%E6%9C%80%E5%B0%8F%E5%8C%96/" title="不变风险最小化"><img class="cover" src="https://z3.ax1x.com/2021/11/12/IDusit.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-12</div><div class="title">不变风险最小化</div></div></a></div><div><a href="/2021/10/15/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%B9%BF/" title="图像增广"><img class="cover" src="https://z3.ax1x.com/2021/11/01/ICs8Vx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-15</div><div class="title">图像增广</div></div></a></div><div><a href="/2021/12/08/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/" title="朴素贝叶斯分类器"><img class="cover" src="https://s4.ax1x.com/2021/12/08/oWPTHI.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-08</div><div class="title">朴素贝叶斯分类器</div></div></a></div><div><a href="/2021/11/12/%E8%A7%86%E8%A7%89%E5%9F%9F%E6%B3%9B%E5%8C%96/" title="视觉域泛化"><img class="cover" src="https://z3.ax1x.com/2021/11/24/oPuWVO.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-12</div><div class="title">视觉域泛化</div></div></a></div><div><a href="/2021/10/18/%E8%BF%91%E4%BC%BC%E8%AE%AD%E7%BB%83/" title="近似训练"><img class="cover" src="https://z3.ax1x.com/2021/11/01/ICslrR.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-18</div><div class="title">近似训练</div></div></a></div><div><a href="/2021/10/17/Perceptron/" title="Perceptron"><img class="cover" src="https://z3.ax1x.com/2021/11/01/ICsnGF.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-17</div><div class="title">Perceptron</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LYZ</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AutoEncoder"><span class="toc-number">1.</span> <span class="toc-text">AutoEncoder</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简单模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCA-%E5%92%8C-AutoEncoder"><span class="toc-number">1.2.</span> <span class="toc-text">PCA 和 AutoEncoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dropout-AutoEncoder"><span class="toc-number">1.3.</span> <span class="toc-text">Dropout AutoEncoder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adversarial-AutoEncoders"><span class="toc-number">1.4.</span> <span class="toc-text">Adversarial AutoEncoders</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoEncoder%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.</span> <span class="toc-text">AutoEncoder代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text">结果分析</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/02/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95%E5%88%99/" title="贝叶斯法则"><img src="https://s4.ax1x.com/2022/03/02/b3uI6x.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="贝叶斯法则"/></a><div class="content"><a class="title" href="/2022/03/02/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95%E5%88%99/" title="贝叶斯法则">贝叶斯法则</a><time datetime="2022-03-02T02:11:15.000Z" title="Created 2022-03-02 10:11:15">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/28/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="HTML学习笔记"><img src="https://s4.ax1x.com/2022/02/28/bKnnT1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML学习笔记"/></a><div class="content"><a class="title" href="/2022/02/28/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="HTML学习笔记">HTML学习笔记</a><time datetime="2022-02-28T06:59:24.000Z" title="Created 2022-02-28 14:59:24">2022-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/13/Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" title="Python虚拟环境"><img src="https://s2.loli.net/2022/01/13/3LBqVdGhnpR4iUM.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python虚拟环境"/></a><div class="content"><a class="title" href="/2022/01/13/Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" title="Python虚拟环境">Python虚拟环境</a><time datetime="2022-01-13T05:27:05.000Z" title="Created 2022-01-13 13:27:05">2022-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/30/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0-1/" title="Java多线程笔记(1)"><img src="https://s2.loli.net/2021/12/30/rZNBvV2ldjPURwD.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java多线程笔记(1)"/></a><div class="content"><a class="title" href="/2021/12/30/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0-1/" title="Java多线程笔记(1)">Java多线程笔记(1)</a><time datetime="2021-12-30T14:18:33.000Z" title="Created 2021-12-30 22:18:33">2021-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/30/EPnP/" title="EPnP"><img src="https://s2.loli.net/2021/12/30/ySkafVmdUD5Yuog.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="EPnP"/></a><div class="content"><a class="title" href="/2021/12/30/EPnP/" title="EPnP">EPnP</a><time datetime="2021-12-30T06:24:48.000Z" title="Created 2021-12-30 14:24:48">2021-12-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By LYZ</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
