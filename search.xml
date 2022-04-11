@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Java基础补充-1</title>
+      <link href="/2022/04/11/Java%E5%9F%BA%E7%A1%80%E8%A1%A5%E5%85%85-1/"/>
+      <url>/2022/04/11/Java%E5%9F%BA%E7%A1%80%E8%A1%A5%E5%85%85-1/</url>
+      
+        <content type="html"><![CDATA[<h1><span id="java-基础补充">Java 基础补充</span></h1><!-- toc --><ul><li><a href="#%E5%B8%B8%E9%87%8F">常量</a></li><li><a href="#%E8%BF%90%E7%AE%97%E7%AC%A6">运算符</a></li><li><a href="#%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA">文件输入输出</a></li><li><a href="#%E5%A4%A7%E6%95%B0">大数</a></li><li><a href="#for-each-%E5%BE%AA%E7%8E%AF">for each 循环</a></li><li><a href="#%E6%95%B0%E7%BB%84%E6%8B%B7%E8%B4%9D">数组拷贝</a></li><li><a href="#%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F">数组排序</a></li><li><a href="#arrays%E7%B1%BB%E4%B8%AD%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">Arrays类中常用函数</a></li><li><a href="#%E4%B8%8D%E8%A7%84%E5%88%99%E6%95%B0%E7%BB%84">不规则数组</a></li></ul><!-- tocstop --><p>[TOC]</p><h2><span id="常量">常量</span></h2><p>用<strong>final</strong>指示常量</p><p>类常量用<strong>static final</strong>, 类常量是希望某个常量在多个类中使用。</p><p>例：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">double</span> <span class="variable">A</span> <span class="operator">=</span> <span class="number">3.1415</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">A</span> <span class="operator">=</span> <span class="number">3.1415</span>;</span><br></pre></td></tr></table></figure><h2><span id="运算符">运算符</span></h2><p><strong>&amp;&amp;（与） || (或)  !（非）</strong></p><p><strong>三元操作符  ?:   例如： x&lt;y?x:y   会返回x和y中较小的一个。</strong></p><h2><span id="文件输入输出">文件输入输出</span></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(Path.of(<span class="string">&quot;file.txt&quot;</span>), StandardCharsets.UTF_8); <span class="comment">//读取文件</span></span><br><span class="line"><span class="type">PrintWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(<span class="string">&quot;file.txt&quot;</span>, StandardCharsets.UTF_8); <span class="comment">//写入文件</span></span><br></pre></td></tr></table></figure><h2><span id="大数">大数</span></h2><p><strong>使用静态 valueOf 可以将普通数值转为大数</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigInteger</span> <span class="variable">a</span> <span class="operator">=</span> BigInteger.valueOf(<span class="number">100</span>);</span><br></pre></td></tr></table></figure><p><strong>BigInteger 和 BigDecimal</strong>分别来实现任意精度整数和浮点数运算。</p><p>**不能使用常用运算符 (如：+ - )  而是使用add 和 multiply **</p><h2><span id="for-each-循环">for each 循环</span></h2><p><strong>格式：for（variable ：collection） statement</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例如</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> element : a)</span><br><span class="line">System.out.println(a[i]);</span><br></pre></td></tr></table></figure><h2><span id="数组拷贝">数组拷贝</span></h2><p><strong>Arrays类的copy()方法</strong></p><p><strong>第二个参数是新数组长度，通常用来增加数组的大小</strong></p><p><strong>如果长度超过， 数值型元素默认赋0， 布尔型默认赋false</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例如</span></span><br><span class="line"><span class="type">int</span>[] copyLuckyNumbers = Arrays.copyOf(luckyNumbers, luckyNumbers.length);</span><br></pre></td></tr></table></figure><h2><span id="数组排序">数组排序</span></h2><p><strong>Arrays类的sort()方法</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例如</span></span><br><span class="line"><span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line"><span class="comment">// 初始化数组，并赋值...</span></span><br><span class="line">Arrays.sort(a);</span><br></pre></td></tr></table></figure><h2><span id="arrays类中常用函数">Arrays类中常用函数</span></h2><ul><li><strong>static String toString(xxx[] a)</strong></li><li><strong>static xxx[] copyOf(xxx[] a, int end)</strong></li><li><strong>static xxx[] copyOfRange(xxx[] a, int start, int end)</strong></li><li><strong>static void sort(xxx[] a)</strong></li><li><strong>static int binarySearch(xxx[] a, xxx v)  &#x2F;&#x2F; 用二分查找算法在a中查找v，返回索引</strong></li><li><strong>static void fill(xxx[] a, xxx v)  &#x2F;&#x2F; 将所有值填充为v</strong></li><li><strong>static boolean equals(xxx[] a, xxx[] b)</strong></li></ul><h2><span id="不规则数组">不规则数组</span></h2><p><strong>Java实际上没有多维数组，只有一堆数组。“数组中的数组。”</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python控制流和Lambda表达式</title>
       <link href="/2022/03/25/Python%E6%8E%A7%E5%88%B6%E6%B5%81%E5%92%8CLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
       <url>/2022/03/25/Python%E6%8E%A7%E5%88%B6%E6%B5%81%E5%92%8CLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
