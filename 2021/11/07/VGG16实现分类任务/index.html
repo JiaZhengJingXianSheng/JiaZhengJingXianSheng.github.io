@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>VGG16实现分类任务 | 威士忌配可乐</title><meta name="keywords" content="机器学习,分类,CNN"><meta name="author" content="LYZ"><meta name="copyright" content="LYZ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="VGG16实现分类任务  [toc] VGG是2014年由牛津大学著名研究组VGG(Visual Geometry Group)提出，斩获当年ImageNet竞赛中定位任务第一名和分类任务第二名。 原理图 原理简述例如有张224x224的RGB图片，我们让他通过两个卷积核为3的卷积层，再通过最大池化层（核尺寸为2，步距为2）。至于卷积层的输入输出维度，参考下图，我们一般常用VGG16模型，最终用多">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>VGG16实现分类任务 | 威士忌配可乐</title><meta name="keywords" content="机器学习,分类,CNN"><meta name="author" content="LYZ"><meta name="copyright" content="LYZ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="VGG16实现分类任务  [toc] VGG是2014年由牛津大学著名研究组VGG(Visual Geometry Group)提出，斩获当年ImageNet竞赛中定位任务第一名和分类任务第二名。 原理图 原理简述例如有张224x224的RGB图片，我们让他通过两个卷积核为3的卷积层，再通过最大池化层（核尺寸为2，步距为2）。至于卷积层的输入输出维度，参考下图，我们一般常用VGG16模型，最终用多">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VGG16实现分类任务">
 <meta property="og:url" content="https://www.quarkhacker.top/2021/11/07/VGG16%E5%AE%9E%E7%8E%B0%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1/index.html">
@@ -121,7 +121,7 @@
       win.activateLightMode = function () {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')
@@ -225,4 +225,4 @@
   document.querySelectorAll('#article-container span.katex-display').forEach(item => {
     btf.wrap(item, 'div', { class: 'katex-wrap'})
   })
-})()</script></div></div></body></html>
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script></div></body></html>

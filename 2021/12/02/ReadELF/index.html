@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux下模仿实现readelf部分功能 | 威士忌配可乐</title><meta name="keywords" content="C++,Linux,C"><meta name="author" content="LYZ"><meta name="copyright" content="LYZ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="模仿实现Linux下 $readelf$ 工具部分功能  [toc] 完整实现：https:&#x2F;&#x2F;github.com&#x2F;JiaZhengJingXianSheng&#x2F;ReadELF  ELF 目标文件格式的最前部是 ELF文件头 (ELF  Header) ,它包含了描述整个文件的基本属性，比如 ELF 文件版本、目标机器型号、程序入口地址等。紧接是 ELF 文件各个段。其中ELF 文件中与段有关的重">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux下模仿实现readelf部分功能 | 威士忌配可乐</title><meta name="keywords" content="C++,Linux,C"><meta name="author" content="LYZ"><meta name="copyright" content="LYZ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="模仿实现Linux下 $readelf$ 工具部分功能  [toc] 完整实现：https:&#x2F;&#x2F;github.com&#x2F;JiaZhengJingXianSheng&#x2F;ReadELF  ELF 目标文件格式的最前部是 ELF文件头 (ELF  Header) ,它包含了描述整个文件的基本属性，比如 ELF 文件版本、目标机器型号、程序入口地址等。紧接是 ELF 文件各个段。其中ELF 文件中与段有关的重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux下模仿实现readelf部分功能">
 <meta property="og:url" content="https://www.quarkhacker.top/2021/12/02/ReadELF/index.html">
@@ -121,7 +121,7 @@
       win.activateLightMode = function () {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')
@@ -233,4 +233,4 @@
   document.querySelectorAll('#article-container span.katex-display').forEach(item => {
     btf.wrap(item, 'div', { class: 'katex-wrap'})
   })
-})()</script></div></div></body></html>
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script></div></body></html>
