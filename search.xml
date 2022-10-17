@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Docker使用经验</title>
+      <link href="/2022/10/17/Docker%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/"/>
+      <url>/2022/10/17/Docker%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Docker使用经验"><a href="#Docker使用经验" class="headerlink" title="Docker使用经验"></a>Docker使用经验</h1><p><strong>官方教程：<a href="https://docker.easydoc.net/">https://docker.easydoc.net</a></strong></p><br/><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul><li><strong>先写Dockerfile</strong></li><li><strong>生成镜像，<code>docker build -t &#123;镜像名:version&#125;  &#123;包含Dockerfile的路径&#125;</code></strong></li><li><strong>运行docker，<code>docker run -it &#123;镜像名:version&#125;</code></strong></li><li><strong>在之前docker基础上生成新的镜像， <code>docker commit &#123;容器id&#125; &#123;新镜像名:version&#125;</code></strong></li><li><strong>打包，<code>docker save -o name.tar &#123;镜像名:version&#125;</code></strong></li><li><strong>读取镜像包，<code>docker load --input &#123;镜像名.tar&#125;</code></strong></li></ul><h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><ul><li><strong>删除镜像，<code>docker rmi -f &#123;镜像名&#125;</code></strong></li><li><strong>查看正在运行容器，<code>docker ps</code></strong></li><li><strong>查看镜像，<code>docker images</code></strong></li><li><strong>分配GPU，<code>docker run -it --gpus all &#123;镜像名:version&#125;</code></strong></li></ul><br/>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git学习笔记</title>
       <link href="/2022/09/05/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/09/05/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -772,9 +799,9 @@
             
             <tag> C++ </tag>
             
-            <tag> CMake </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> CMake </tag>
             
         </tags>
       
