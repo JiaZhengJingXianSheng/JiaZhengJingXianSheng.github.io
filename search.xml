@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>MySQL学习笔记-Part2</title>
+      <link href="/2023/03/28/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/"/>
+      <url>/2023/03/28/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="MySQL-学习笔记-Part2"><a href="#MySQL-学习笔记-Part2" class="headerlink" title="MySQL 学习笔记 Part2"></a>MySQL 学习笔记 Part2</h2><br/><p><strong>学习链接来自黑马程序员： <a href="https://www.bilibili.com/video/BV1Kr4y1i7ru/?p=22&amp;share_source=copy_web&amp;vd_source=c76bb3d6e0326c966bf1bf32db90eb22">https://www.bilibili.com/video/BV1Kr4y1i7ru/?p=22&amp;share_source=copy_web&amp;vd_source=c76bb3d6e0326c966bf1bf32db90eb22</a></strong></p><br/><h2 id="创建一个表"><a href="#创建一个表" class="headerlink" title="创建一个表"></a>创建一个表</h2><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-1.png"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table emp(</span><br><span class="line">    id int comment &quot;编号&quot;,</span><br><span class="line">    workno varchar(10) comment &quot;工号&quot;,</span><br><span class="line">    name varchar(10) comment &quot;姓名&quot;,</span><br><span class="line">    gender char(1) comment &quot;性别&quot;,</span><br><span class="line">    age tinyint unsigned comment &quot;年龄&quot;,</span><br><span class="line">    idcard char(18) comment &quot;身份证号&quot;,</span><br><span class="line">    entrydate date comment &quot;入职时间&quot;</span><br><span class="line">) comment &quot;员工表&quot;;</span><br></pre></td></tr></table></figure><br/><h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><h3 id="基础操作总结"><a href="#基础操作总结" class="headerlink" title="基础操作总结"></a>基础操作总结</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-2.png"></p><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-3.png"></p><br/><h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-4.png"></p><h3 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-5.png"></p><h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><p><strong>简单来说，起始索引从0开始。</strong></p><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-6.png"></p><h3 id="DQL-执行顺序"><a href="#DQL-执行顺序" class="headerlink" title="DQL-执行顺序"></a>DQL-执行顺序</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-7.png"></p><h3 id="DQL-总结"><a href="#DQL-总结" class="headerlink" title="DQL 总结"></a>DQL 总结</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-8.png"></p><br/><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-9.png"></p><br/><h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-10.png"></p><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-11.png"></p><h3 id="DCL-总结"><a href="#DCL-总结" class="headerlink" title="DCL 总结"></a>DCL 总结</h3><p><img src="https://whiskey-1307771980.cos.ap-beijing.myqcloud.com/202303/20230328-12.png"></p><br/>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java基础补充-2</title>
       <link href="/2023/03/09/Java%E5%9F%BA%E7%A1%80%E8%A1%A5%E5%85%85-2/"/>
       <url>/2023/03/09/Java%E5%9F%BA%E7%A1%80%E8%A1%A5%E5%85%85-2/</url>
@@ -499,9 +524,9 @@
       
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> 环境配置 </tag>
+            
+            <tag> Python </tag>
             
         </tags>
       
@@ -578,9 +603,9 @@
       
         <tags>
             
-            <tag> 小工具 </tag>
-            
             <tag> Python </tag>
+            
+            <tag> 小工具 </tag>
             
         </tags>
       
