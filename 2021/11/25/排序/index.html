@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>排序 | GG-Bond</title><meta name="author" content="GG-Bond"><meta name="copyright" content="GG-Bond"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="C++常用排序 代码链接 https:&#x2F;&#x2F;github.com&#x2F;JiaZhengJingXianSheng&#x2F;SortByCPlusPlus  选择排序 选择排序可以将序列看作有序序列和无序序列的结合。如何理解这句话，我们拿第一个值当作标定，和后面所有值对比，找出小于标定的结果并进行交换。那么一轮交换就可以选出一个最小值，当我们标定不断后移就可实现排序。当然，标定应该在倒数第二个值终止，因为最后一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序">
+<meta property="og:url" content="https://www.whiskeycola.cn/2021/11/25/%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="GG-Bond">
+<meta property="og:description" content="C++常用排序 代码链接 https:&#x2F;&#x2F;github.com&#x2F;JiaZhengJingXianSheng&#x2F;SortByCPlusPlus  选择排序 选择排序可以将序列看作有序序列和无序序列的结合。如何理解这句话，我们拿第一个值当作标定，和后面所有值对比，找出小于标定的结果并进行交换。那么一轮交换就可以选出一个最小值，当我们标定不断后移就可实现排序。当然，标定应该在倒数第二个值终止，因为最后一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.whiskeycola.cn/image/202111/20211125_cover.jpg">
+<meta property="article:published_time" content="2021-11-25T13:49:50.000Z">
+<meta property="article:modified_time" content="2025-04-17T14:32:30.563Z">
+<meta property="article:author" content="GG-Bond">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.whiskeycola.cn/image/202111/20211125_cover.jpg"><link rel="shortcut icon" href="/image/resources/%E6%9F%B4%E7%8A%AC.png"><link rel="canonical" href="https://www.whiskeycola.cn/2021/11/25/%E6%8E%92%E5%BA%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '排序',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 22:32:30'
+}</script><link rel="stylesheet" href="/css/fly.css?1"><link rel="stylesheet" href="/css/icon.css?1"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/image/resources/dog1.png" onerror="onerror=null;src='/image/404ERROR.png'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/C/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></li><li><a class="site-page child" href="/categories/Linux/"><i class="fa-fw fas fa-terminal"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Java/"><i class="fa-fw fas fa-mug-saucer"></i><span> Java</span></a></li><li><a class="site-page child" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-sitemap"></i><span> Machine Learning</span></a></li><li><a class="site-page child" href="/categories/MySQL/"><i class="fa-fw fas fa-database"></i><span> MySQL</span></a></li><li><a class="site-page child" href="/categories/Algorithm/"><i class="fa-fw fa fa-ghost"></i><span> Algorithm</span></a></li><li><a class="site-page child" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"><i class="fa-fw fa fa-compass"></i><span> 杂货铺</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bars"></i><span> 所有分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw iconfont icon-gongwuyuankaoshi"></i><span> GWY</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/GWY%E9%9A%8F%E7%AC%94/"><i class="fa-fw iconfont icon-wenji-suibi"></i><span> GWY随笔</span></a></li><li><a class="site-page child" href="/categories/GWY%E5%88%B7%E9%A2%98/"><i class="fa-fw iconfont icon-fenshijuan"></i><span> GWY刷题</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/202111/20211125_cover.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">GG-Bond</span></a><a class="nav-page-title" href="/"><span class="site-name">排序</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/C/"><i class="fa-fw fas fa-code"></i><span> C++</span></a></li><li><a class="site-page child" href="/categories/Linux/"><i class="fa-fw fas fa-terminal"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Java/"><i class="fa-fw fas fa-mug-saucer"></i><span> Java</span></a></li><li><a class="site-page child" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-sitemap"></i><span> Machine Learning</span></a></li><li><a class="site-page child" href="/categories/MySQL/"><i class="fa-fw fas fa-database"></i><span> MySQL</span></a></li><li><a class="site-page child" href="/categories/Algorithm/"><i class="fa-fw fa fa-ghost"></i><span> Algorithm</span></a></li><li><a class="site-page child" href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/"><i class="fa-fw fa fa-compass"></i><span> 杂货铺</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-bars"></i><span> 所有分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw iconfont icon-gongwuyuankaoshi"></i><span> GWY</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/GWY%E9%9A%8F%E7%AC%94/"><i class="fa-fw iconfont icon-wenji-suibi"></i><span> GWY随笔</span></a></li><li><a class="site-page child" href="/categories/GWY%E5%88%B7%E9%A2%98/"><i class="fa-fw iconfont icon-fenshijuan"></i><span> GWY刷题</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">排序</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-25T13:49:50.000Z" title="发表于 2021-11-25 21:49:50">2021-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-17T14:32:30.563Z" title="更新于 2025-04-17 22:32:30">2025-04-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/">C++</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="c常用排序">C++常用排序</h1>
+<p><strong>代码链接</strong>
+<strong>https://github.com/JiaZhengJingXianSheng/SortByCPlusPlus</strong></p>
+<hr />
+<h2 id="选择排序">选择排序</h2>
+<p>选择排序可以将序列看作有序序列和无序序列的结合。如何理解这句话，我们拿第一个值当作标定，和后面所有值对比，找出小于标定的结果并进行交换。那么一轮交换就可以选出一个最小值，当我们标定不断后移就可实现排序。<strong>当然，标定应该在倒数第二个值终止，因为最后一个值并无后续。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">selectSort</span><span class="params">(<span class="type">int</span>* &amp;arr, <span class="type">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; arr[j]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[i];</span><br><span class="line">                arr[i] = arr[j];</span><br><span class="line">                arr[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到第一层遍历，是从第一个值到倒数第二个值，第二层遍历是从 <span
+class="math inline">\(i+1\)</span>
+的值到最后一个值。对内部进行判断，如果<span
+class="math inline">\(i\)</span>对应的结果大于 <span
+class="math inline">\(j\)</span>
+的结果，进行交换。当然如果想逆序，只需要将 <span
+class="math inline">\(&lt;\)</span> 改为 <span
+class="math inline">\(&gt;\)</span></p>
+<hr />
+<h2 id="冒泡排序">冒泡排序</h2>
+<p>冒泡排序是用相邻的两个值不断比较，将两个相邻的结果按照
+<strong>[由大到小、由小到大]</strong> 交换
+，那么每次都可一冒出一个最小的结果，或最大的结果，这也是冒泡排序名字的由来。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="type">int</span>* &amp;arr,<span class="type">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;len<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>; j&lt;len<span class="number">-1</span>-i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j<span class="number">+1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j<span class="number">+1</span>];</span><br><span class="line">                arr[j<span class="number">+1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一层遍历的 <span class="math inline">\(i\)</span>
+和上面的选择排序不同，这边 <span class="math inline">\(i\)</span>
+的含义是需要对长度为 <span class="math inline">\(len\)</span> 的数组冒泡
+<span class="math inline">\(len-1\)</span> 次。</p>
+<hr />
+<h2 id="直接插入排序">直接插入排序</h2>
+<p>直接插入排序是从第二个值开始，不断去前面有序序列中寻找自己位置并插入的过程，原理比较简单。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">directInsertSort</span><span class="params">(<span class="type">int</span> *&amp;arr, <span class="type">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j, pivot;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        pivot = arr[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> <span class="keyword">and</span> pivot &lt; arr[j]; j--) &#123; <span class="comment">// 后移并判断位置</span></span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j + <span class="number">1</span>] = pivot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体实现是从第2个值开始遍历，不断去寻找自己所在位置。其中第二个 <span
+class="math inline">\(for\)</span> 循环，是 <span
+class="math inline">\(arr[i]\)</span>
+从后往前找应该插入的位置，并实现后移操作，把插入的位置让出来。</p>
+<hr />
+<h2 id="快速排序">快速排序</h2>
+<p>快速排序是选取一个数当作基准 <span
+class="math inline">\(pivot\)</span> ，原理是将比他大的值放在 <span
+class="math inline">\(pivot\)</span>
+右边，小的值放在左边。具体如何实现，比如我们常用第一个值当作初始基准，<strong>从右边往左找，找到第一个小于基准的值</strong>，将他与基准交换，然后从基准交换前的位置，<strong>从左往右找第一个大于基准的值</strong>，进行交换，依次往复，基准的位置就可以确定。<strong>所有左边的结果都小于他，右边都大于他</strong>。</p>
+<p>而事实上我们真正使用时并不需要实时交换，我们用一个变量 <span
+class="math inline">\(pivot\)</span>
+备份了基准，当最终结束的时候才写入确定的位置，然后换个基准，重复上述操作。有点类似于
+<span class="math inline">\(cache-memory\)</span>
+系统中的写回法。当然在实际实现中，我们一般选择对左右两边进行递归，这样能大大减少代码量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(<span class="type">int</span>* &amp;arr,<span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left&lt; right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> i = left, j = right, pivot = arr[left];</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; arr[j]&gt;= pivot) <span class="comment">// 从右向左找第一个小于基准的值</span></span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; j) <span class="comment">//防止越过自己本身</span></span><br><span class="line">                arr[i++] = arr[j];</span><br><span class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; arr[i]&lt; pivot) <span class="comment">// 从左向右找第一个大于等于基准的值</span></span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; j) <span class="comment">//防止越过自己本身</span></span><br><span class="line">                arr[j--] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        arr[i] = pivot;</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, left, i - <span class="number">1</span>); <span class="comment">//左边递归</span></span><br><span class="line">        <span class="built_in">quickSort</span>(arr, i + <span class="number">1</span>, right); <span class="comment">//右边递归</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码中 <span class="math inline">\(i\)</span> 和 <span
+class="math inline">\(j\)</span> 是用来查找位置，我们没有必要来回写入
+<span class="math inline">\(pivot\)</span>
+的值，只需要记录他的位置，最终写入就可以。而 <span
+class="math inline">\(left\)</span> 和 <span
+class="math inline">\(right\)</span>
+是记录标定的，在这个代码里因为我们的初始标定选择是最左边的值，所以 <span
+class="math inline">\(left\)</span> 就是我们基准交换前的位置。</p>
+<hr />
+<h2 id="堆排序">堆排序</h2>
+<p>我们对于堆排序算法，本质上是通过调整 <strong>[大根堆/小根堆]</strong>
+来寻找 <strong>[最大值/最小值]</strong> 的过程。</p>
+<p>对于二叉树而言，我们如果根节点索引从 <span
+class="math inline">\(1\)</span> 开始，那么左子树索引等于双亲索引 <span
+class="math inline">\(/2\)</span> ，右子树索引等于双亲索引 <span
+class="math inline">\(/2\)</span> 向下取整。如果根节点索引从 <span
+class="math inline">\(0\)</span> 开始，那么左子树索引等于双亲索引 <span
+class="math inline">\(/2+1\)</span> ， 右子树索引为双亲索引 <span
+class="math inline">\(/2+2\)</span> 。</p>
+<p>我们以大根堆的调整算法举例，我们令 <span
+class="math inline">\(i\)</span>
+等于最后一个无序值的双亲索引，查看左右子树中键值大于双亲的节点，与双亲交换，然后
+<span class="math inline">\(i\)</span> - -
+，我们就可以将最大的值调整到根节点。然后将根节点的值与最后一个无序节点交换，将换下来的最大值记录为有序序列。这样每次都可以找到一个最值，有点类似于选择排序，只不过选取最值的方法不同，这样不断重复就可以得到有序序列。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成大根堆</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">adjust</span><span class="params">(<span class="type">int</span>* &amp;arr, <span class="type">int</span> len, <span class="type">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">2</span>*index + <span class="number">1</span>; <span class="comment">// 左孩子</span></span><br><span class="line">    <span class="type">int</span> right = <span class="number">2</span>*index + <span class="number">2</span>;<span class="comment">// 右孩子</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> midIndex = index;</span><br><span class="line">    <span class="keyword">if</span>(left&lt;len &amp;&amp; arr[left] &gt; arr[midIndex])</span><br><span class="line">        midIndex = left;</span><br><span class="line">    <span class="keyword">if</span>(right&lt;len &amp;&amp; arr[right] &gt; arr[midIndex])</span><br><span class="line">        midIndex = right;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(midIndex != index)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> temp;</span><br><span class="line">        temp = arr[midIndex];</span><br><span class="line">        arr[midIndex] = arr[index];</span><br><span class="line">        arr[index] = temp;</span><br><span class="line">        <span class="built_in">adjust</span>(arr, len, midIndex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>让 <span class="math inline">\(left\)</span> 和 <span
+class="math inline">\(right\)</span>
+分别指向左右孩子，判断左右孩子是否大于双亲节点，大于则更新 <span
+class="math inline">\(midIndex\)</span> <strong>[
+下移，并指向大于自己的子节点索引 ]</strong> ，并将交换两值，在对更新后的
+<span class="math inline">\(midIndex\)</span>
+递归，就可以得出完整的大根堆。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapSort</span><span class="params">(<span class="type">int</span>* &amp;arr, <span class="type">int</span> len )</span></span>&#123;</span><br><span class="line">    <span class="comment">// 从最后一个无序节点双亲开始</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=len/<span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">adjust</span>(arr, len, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 根节点和最后一个无序节点交换</span></span><br><span class="line">        <span class="type">int</span> temp;</span><br><span class="line">        temp = arr[<span class="number">0</span>];</span><br><span class="line">        arr[<span class="number">0</span>] = arr[i];</span><br><span class="line">        arr[i] = temp;</span><br><span class="line">        <span class="built_in">adjust</span>(arr, i, <span class="number">0</span>);    <span class="comment">// 对无序节点继续生成大根堆</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>排序时从最后一个无序节点的双亲开始，调整大根堆。 因为 <span
+class="math inline">\(len\)</span> 个节点我们原则上只需要遍历 <span
+class="math inline">\(len-1\)</span>
+次即可，将生成的大根堆根节点和最后一个无序节点交换，再对剩下的无序节点生成大根堆。通过
+<span class="math inline">\(len-1\)</span>
+次循环就可以得到最终的序列。</p>
+<p>我们本质上是借用二叉树，实现普通顺序表的排序。</p>
+<hr />
+<h2 id="自定义排序">自定义排序</h2>
+<p>其实我们可以通过使用 <span class="math inline">\(algorithm\)</span>
+内的 <span class="math inline">\(sort\)</span>
+函数自定义规则，具体实现如下。</p>
+<p>比如我们有一个学生的结构体，如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">stu</span>&#123;</span><br><span class="line">    string name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">int</span> score;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们希望按照自己的规则对学生进行排名，比如我们希望在正常按成绩排序的过程中，碰到成绩相同的学生我们认为你年纪更小一点的同学应该排名靠前一点，那么如何定义规则。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">compare</span><span class="params">(stu a, stu b )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 成绩相同用年龄从小往大排序</span></span><br><span class="line">    <span class="keyword">if</span>(a.score == b.score)</span><br><span class="line">        <span class="keyword">return</span> a.age&lt;b.age;</span><br><span class="line">    <span class="comment">//成绩不同，直接根据成绩好坏排序</span></span><br><span class="line">    <span class="keyword">return</span> a.score &gt; b.score;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以写一个 <span class="math inline">\(bool\)</span>
+返回值的函数，传入两学生，根据预先希望的规则返回 <span
+class="math inline">\(a\)</span> 和 <span
+class="math inline">\(b\)</span> 的状态情况。</p>
+<p>当然调用比较容易传入起始地址以及偏移量即可，这边偏移量并非实打实的偏移量，排序函数会用偏移量这个值乘以
+<span class="math inline">\(sizeof(STU)\)</span> 当作真实偏移量。</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/Algorithm/">Algorithm</a></div><div class="post-share"><div class="social-share" data-image="/image/202111/20211125_cover.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2021/11/26/Java%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="Java简单工厂模式"><img class="cover" src="/image/202111/20211126_cover.jpg" onerror="onerror=null;src='/image/404ERROR.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Java简单工厂模式</div></div><div class="info-2"><div class="info-item-1">Java简单工厂模式 参考书目 《大话设计模式》 程杰 清华大学出版社 代码链接 https://github.com/JiaZhengJingXianSheng/Calculator_By_Java 我们在编写程序时为了容易修改，通常会用 封装、继承、多态 来降低程序的耦合度。 比如我们要实现一个简单的计算器功能，具体功能为传入两个数值和一个操作符，返回计算结果。  一、 抽象类创建 通常我们会在一个抽象类内部定义主要的信息，比如输出输出等。 1234567891011121314151617181920212223public abstract class Operation &#123;    private double _numberA = 0;    private double _numberB = 0;    public double get_numberA() &#123;        return _numberA;    &#125;    public void set_numberA(double _numberA) &#123;       ...</div></div></div></a><a class="pagination-related" href="/2021/11/24/Seq2Seq/" title="Seq2Seq"><img class="cover" src="/image/202111/20211124_cover.jpg" onerror="onerror=null;src='/image/404ERROR.png'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Seq2Seq</div></div><div class="info-2"><div class="info-item-1">Seq2Seq 以往的循环神经网络，输入的是不定长的序列，输出确是定长的，我们选取最长词并通过对短的词扩充来实现输出定长。但有些问题的输出不是定长的，以机器翻译为例，输入一段英语，输出对应法文，输入和输出大概率不定长，比如  英文：Beat it. 法文：Dégage ! 英文：Call me. 法文：Appelle-moi !  当输入输出序列不定长时，我们可以采用编码器-解码器（encoder-decoder）或Seq2Seq实现。 论文参考：https://arxiv.org/abs/1409.3215  编码器-解码器 编码器和解码器分别对应输入序列和输出序列的两个循环神经网络。  编码器 编码器将长度可变的输入序列转换成形状固定的上下文变量，并且将输入序列的信息在该上下文变量中进行编码。 假设输入序列是\(x_1,x_2,x_3...x_T\) ,其中\(x_t\)是输入文本序列中第t个词原，用\(h_t\) 来表示上一时间的隐藏状态，用函数\(f\)来描述为 \[ h_t=f(x_t,h_t−1) \] 编码器的背景向量 \[ c =...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2021/11/18/CMake%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="Linux CMake工程目录结构"><img class="cover" src="/image/202111/20211118_cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-18</div><div class="info-item-2">Linux CMake工程目录结构</div></div><div class="info-2"><div class="info-item-1">Linux CMake工程目录结构 主文件目录 1234./lib/./src/./build./CMakeLists.txt ./CMakeLists.txt 12345678CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )PROJECT(MAIN)ADD_SUBDIRECTORY(./lib )ADD_SUBDIRECTORY(./src) ./lib/CMakeLists.txt 12345AUX_SOURCE_DIRECTORY(. DIR_LIB_SRCS)SET(LIBRARY_OUTPUT_PATH $&#123;PROJECT_BINARY_DIR&#125;/lib)ADD_LIBRARY(LIB STATIC $&#123;DIR_LIB_SRCS&#125;) ./src/CMakeLists.txt 12345678910INCLUDE_DIRECTORIES($&#123;PROJECT_SOURCE_DIR&#125;/lib)  SET(EXECUTABLE_OUTPUT_PATH...</div></div></div></a><a class="pagination-related" href="/2021/11/17/CPP%E4%B8%BB%E5%AD%98%E5%B1%82%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/" title="C++主存层面数据交换"><img class="cover" src="/image/202111/20211117_cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-17</div><div class="info-item-2">C++主存层面数据交换</div></div><div class="info-2"><div class="info-item-1">C++ 互换指针指向内存结果 1. 互换指针指向内存结果 将命令参数前两个值在主存中互换并输出。 1234567891011121314#include &lt;iostream&gt;#include &quot;mySwap.hpp&quot;int main(int argc, char** argv)&#123;        std::cout&lt;&lt;&quot;Origin info is: &quot;&lt;&lt;std::endl;        std::cout&lt;&lt;&quot;a: &quot;&lt;&lt;argv[1]&lt;&lt;&quot; \tb: &quot;&lt;&lt;argv[2]&lt;&lt;std::endl;        mySwap(argv[1],argv[2]);        std::cout&lt;&lt;&quot;Has been swaped info is: &quot;&lt;&lt;std::endl;        std::cout&lt;&lt;&quot;a:...</div></div></div></a><a class="pagination-related" href="/2022/11/04/CPP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" title="《C++ Primer 第五版》学习笔记"><img class="cover" src="/image/202211/20221104_cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-04</div><div class="info-item-2">《C++ Primer 第五版》学习笔记</div></div><div class="info-2"><div class="info-item-1">《C++ Primer 第五版》学习笔记 以下为 Chapter1、Chapter2 C++是如何工作的 源文件-&gt; 编译器-&gt; 链接-&gt; 可执行程序 每一个源文件在编译后都会生成.obj文件 ，通过链接就可以将所有obj文件生成一个可执行文件。 例如#include &lt;iostream&gt;，#符号后面跟的都是预处理语句。 预处理语句是在实际编译之前处理。 #include 实际上就是寻找一个文件，将此文件内容拷贝到现在文件中，这就是 头文件 项目中的每个cpp文件都会被编译，但头文件不会被编译。编译器会给每个cpp文件生成对应的obj文件，链接器将他们合并成一个exe文件。  C++编译器是如何工作的 预处理阶段编译器会遍历所有的预处理语句并对其处理，常用的预处理语句有include if ifdef pragma。 .obj文件是二进制的机器码，如果我们想查看对应的汇编代码，可以在VS的项目属性里，C/C++ --&gt; Output File --&gt; Assembler Output --&gt; Assembly-Only...</div></div></div></a><a class="pagination-related" href="/2021/12/02/Linux%E4%B8%8B%E6%A8%A1%E4%BB%BF%E5%AE%9E%E7%8E%B0ReadELF%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD/" title="Linux下模仿实现readelf部分功能"><img class="cover" src="/image/202112/20211202_cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="info-item-2">Linux下模仿实现readelf部分功能</div></div><div class="info-2"><div class="info-item-1">模仿实现Linux下 \(readelf\) 工具部分功能 完整实现： https://github.com/JiaZhengJingXianSheng/ReadELF ELF 目标文件格式的最前部是 ELF文件头 (ELF Header) ,它包含了描述整个文件的基本属性，比如 ELF 文件版本、目标机器型号、程序入口地址等。紧接是 ELF 文件各个段。其中ELF 文件中与段有关的重要结构就是 段表 (Section Header Table) ,该表描述了ELF 文件包含的所有段的信息，比如每个段的段名、段的长度、在文件中的偏移、读写权限及段的其他属性。  在 linux 下elf的定义存放在 \(/usr/include\) 下, 我们可以用 \(readelf -h\) 命令加上文件来查看ELF头文件。 1vim /usr/include/elf.h  ELF 的文件头中定义了...</div></div></div></a><a class="pagination-related" href="/2021/12/15/Linux%E4%B8%8B%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84Shell/" title="Linux下模拟实现简单的Shell"><img class="cover" src="/image/202112/20221215_cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="info-item-2">Linux下模拟实现简单的Shell</div></div><div class="info-2"><div class="info-item-1">Linux下模拟实现简单的Shell 完整代码：https://github.com/JiaZhengJingXianSheng/Linux_Shell 一、 fork fork系统调用用于创建一个新进程，称为子进程，它与进程（称为系统调用fork的进程）同时运行，此进程称为父进程。创建新的子进程后，两个进程将执行fork（）系统调用之后的下一条指令。子进程使用相同的程序计数器，相同的CPU寄存器，在父进程中使用的相同打开文件。 特点 1）在父进程中，fork返回新创建子进程的进程ID； 2）在子进程中，fork返回0； 3）如果出现错误，fork返回一个负值； 如果创建新进程成功，则出现两个进程，一个是子进程，一个是父进程。在子进程中，fork函数返回0，在父进程中，fork返回新创建子进程的进程ID。因此我们可以通过判断fork返回值来确定进程是子进程还是父进程。 二、 execvp execvp() 会从PATH所指的目录中查找符合参数file 的文件名，找到后便执行该文件，然后将第二个参数...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/resources/dog1.png" onerror="this.onerror=null;this.src='/image/404ERROR.png'" alt="avatar"/></div><div class="author-info-name">GG-Bond</div><div class="author-info-description">墙一旦倒塌，视野便会开阔。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JiaZhengJingXianSheng"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">不至于前，不止于此。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c%E5%B8%B8%E7%94%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">C++常用排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">直接插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">堆排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F"><span class="toc-text">自定义排序</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/GWY/" title="随笔"><img src="/image/resources/BackGround.jpg" onerror="this.onerror=null;this.src='/image/404ERROR.png'" alt="随笔"/></a><div class="content"><a class="title" href="/2025/04/24/GWY/" title="随笔">随笔</a><time datetime="2025-04-23T16:00:00.000Z" title="发表于 2025-04-24 00:00:00">2025-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/13/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="React学习笔记"><img src="/image/202411/20241113-cover.jpg" onerror="this.onerror=null;this.src='/image/404ERROR.png'" alt="React学习笔记"/></a><div class="content"><a class="title" href="/2024/11/13/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="React学习笔记">React学习笔记</a><time datetime="2024-11-13T08:00:00.000Z" title="发表于 2024-11-13 16:00:00">2024-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/01/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Git常用命令"><img src="/image/202411/20241101-cover.jpg" onerror="this.onerror=null;this.src='/image/404ERROR.png'" alt="Git常用命令"/></a><div class="content"><a class="title" href="/2024/11/01/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Git常用命令">Git常用命令</a><time datetime="2024-11-01T06:07:28.000Z" title="发表于 2024-11-01 14:07:28">2024-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/18/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Part4/" title="Spring学习笔记 - Part4"><img src="/image/202304/20230418-cover.jpg" onerror="this.onerror=null;this.src='/image/404ERROR.png'" alt="Spring学习笔记 - Part4"/></a><div class="content"><a class="title" href="/2023/04/18/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Part4/" title="Spring学习笔记 - Part4">Spring学习笔记 - Part4</a><time datetime="2023-04-18T01:30:00.000Z" title="发表于 2023-04-18 09:30:00">2023-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/17/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Part3/" title="Spring学习笔记 - Part3"><img src="/image/202304/20230417-cover.jpg" onerror="this.onerror=null;this.src='/image/404ERROR.png'" alt="Spring学习笔记 - Part3"/></a><div class="content"><a class="title" href="/2023/04/17/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Part3/" title="Spring学习笔记 - Part3">Spring学习笔记 - Part3</a><time datetime="2023-04-17T01:30:00.000Z" title="发表于 2023-04-17 09:30:00">2023-04-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/image/202111/20211125_cover.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2025 By GG-Bond</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+      
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
