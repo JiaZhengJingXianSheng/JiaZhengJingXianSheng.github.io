@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4727561 */
-  src: url('//at.alicdn.com/t/c/font_4727561_p2xzcplyhfd.woff2?t=1745845337909') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4727561_p2xzcplyhfd.woff?t=1745845337909') format('woff'),
-       url('//at.alicdn.com/t/c/font_4727561_p2xzcplyhfd.ttf?t=1745845337909') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4727561_gx6cnho8b3.woff2?t=1746546506216') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4727561_gx6cnho8b3.woff?t=1746546506216') format('woff'),
+       url('//at.alicdn.com/t/c/font_4727561_gx6cnho8b3.ttf?t=1746546506216') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mianshi:before {
+  content: "\e606";
 }
 
 .icon-tongjijisuan:before {
