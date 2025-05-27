@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>资料分析笔记整理</title>
+      <link href="/2025/05/27/%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/"/>
+      <url>/2025/05/27/%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p><br/></p><h2 id="基础">基础</h2><p><span class="math display">\[\begin{align*}    基期量 &amp;=现期量-增长量 \\                &amp;=\frac{现期量}{1+基期量}\end{align*}\]</span></p><p><br/></p><hr /><p><span class="math display">\[增长率r =\frac{增长量}{基期量}=\frac{现期量-基期量}{基期量}\]</span> <br/></p><hr /><p><span class="math display">\[\begin{align*}    增长量 &amp;=现期-基期 \\                &amp;=基期*r\\                &amp;=现期*\frac{r}{1+r}\end{align*}\]</span> <br/></p><h2 id="年均增长量与年均增长率">年均增长量与年均增长率</h2><p><span class="math display">\[年均增长量=\frac{现期-基期}{N} \quad \quad \text{（其中 N 为年份）}\]</span></p><p><br/> <span class="math display">\[年均增长率=&gt; \quad (1+r)^N=\frac{现期}{基期} \quad \quad\text{（反求r）}\]</span> <br/></p><h2 id="间隔增长率">间隔增长率</h2><p><span class="math display">\[r=r_1+r_2+r_1r_2\]</span></p><p>其中 <span class="math inline">\(r_1,r_2\)</span>是部分间隔的增长率，<span class="math inline">\(r\)</span>是总的间隔增长率</p><p><br/></p><h2 id="乘积增长率">乘积增长率</h2><p>如果量的关系为 <span class="math inline">\(A=B*C\)</span>，则乘积增长率 <span class="math inline">\(r_A\)</span> 为： <spanclass="math display">\[r_A=r_B+r_C+r_Br_C\]</span> 其中 <span class="math inline">\(r_B,r_C\)</span>是B和C的增长率，<span class="math inline">\(r_A\)</span> 是A的增长率</p><p><br/></p><hr /><h2 id="百化分">“百化分”</h2><p><span class="math display">\[增长量=\frac{现期量}{n+1} \quad \text{其中 } |r|=\frac{1}{n}\]</span></p><ul><li><p>比如，增长率为<strong>正的</strong> <spanclass="math inline">\(\frac{1}{5}\)</span> =&gt;基期量是5份的话，现期量就是6份。所以 <spanclass="math inline">\(增长量=\frac{现期量}{6}\)</span></p></li><li><p>比如，增长率为<strong>负的</strong> <spanclass="math inline">\(\frac{1}{5}\)</span> =&gt;基期量是5份的话，现期量就是4份。所以 <spanclass="math inline">\(增长量=\frac{现期量}{4}\)</span></p></li></ul><p><strong>⚠️在 <span class="math inline">\(|r|&lt;4\%\)</span>，直接用现期量替代基期量计算，即 <spanclass="math inline">\(增长量\approx 现期量*r\)</span></strong></p><p><br/></p><h2 id="化除为乘">“化除为乘”</h2><p><strong>在 <span class="math inline">\(|r|&lt;4\%\)</span>时:</strong> <span class="math display">\[\begin{gather*}    \frac{A}{1+r} \approx A(1-r) \\    \frac{A}{1-r} \approx A(1+r)\end{gather*}\]</span> <br/></p><hr /><h2 id="增长贡献率和拉动增长率">“增长贡献率”和“拉动增长率”</h2><p><span class="math display">\[增长贡献率=\frac{部分增长量}{整体增长量}\]</span></p><p><span class="math display">\[拉动增长率=\frac{部分增长量}{整体基期量}\]</span></p><p><br/></p><hr /><h2 id="基期比重">基期比重</h2><p><strong>例：2024总体为B，同比增长率为b；部分为A，同比增长率为a；则2023年A占B的比重为？</strong><span class="math display">\[\frac{A}{B}*\frac{1+b}{1+a}\]</span> <br/></p><h2 id="基期平均数">基期平均数</h2><p><strong>例：2024年总工资为A，同比增长率为a；B是总人数，同比增长为b，则基期平均工资是多少？</strong><span class="math display">\[\frac{A}{B}*\frac{1+b}{1+a}\]</span> <br/></p><hr /><h2 id="两期比重差">两期比重差</h2><p><strong>例：2024总体为B，同比增长率为b；部分为A，同比增长率为a；则2024年A占B的比重比2023年高多少？</strong><span class="math display">\[\frac{A}{B}-\frac{A}{B}*\frac{1+b}{1+a}=\frac{A}{B}*\frac{a-b}{1+a}\]</span> <strong>注：判正负/比大小的题，直接比较a，b的大小即可</strong></p><p><img src="/image/笔记/资料分析/两期比重差错题.jpg" /></p><p><br/></p><h2 id="两期平均数的差">两期平均数的差</h2><p><strong>例：2024年总工资为A，同比增长率为a；B是总人数，同比增长为b，则2024年人均工资比2023年高多少？</strong><span class="math display">\[\frac{A}{B}-\frac{A}{B}*\frac{1+b}{1+a}=\frac{A}{B}*\frac{a-b}{1+a}\]</span> <br/></p><hr /><h2 id="平均数的增长率">平均数的增长率</h2><p><strong>例：2024年总工资为A，同比增长率为a；B是总人数，同比增长为b，则2024年人均工资同比增长多少？</strong><span class="math display">\[\frac{a-b}{1+b}\]</span><strong>⚠️：一定要分清平均数增长率和两期平均数的差的问法。</strong></p><p><br/></p><hr /><h2 id="混合增长率">混合增长率</h2><ul><li>偏向基期量较大的</li><li>增速差与<strong>基期量</strong>成反比</li></ul><p><img src="/image/笔记/资料分析/混合增长率.jpg" /></p><p><br/></p><h2 id="按名义增长率求现期">按名义增长率求现期</h2><p><span class="math display">\[价格现期量=\frac{现期量}{1+名义增长率}*(1+实际增长率)\]</span></p><p><br/></p><ul><li><strong>面积：1公顷=15亩</strong></li><li><strong>翻N番=2的N次方倍</strong></li></ul><p><br/></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> GWY笔记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2025模考大赛国考(地市级)第十八季</title>
       <link href="/2025/05/25/2025%E6%A8%A1%E8%80%83%E5%A4%A7%E8%B5%9B(%E5%9C%B0%E5%B8%82%E7%BA%A7)%E7%AC%AC%E5%8D%81%E5%85%AB%E5%AD%A3/"/>
       <url>/2025/05/25/2025%E6%A8%A1%E8%80%83%E5%A4%A7%E8%B5%9B(%E5%9C%B0%E5%B8%82%E7%BA%A7)%E7%AC%AC%E5%8D%81%E5%85%AB%E5%AD%A3/</url>
@@ -892,9 +911,9 @@
       
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> 环境配置 </tag>
+            
+            <tag> Python </tag>
             
         </tags>
       
