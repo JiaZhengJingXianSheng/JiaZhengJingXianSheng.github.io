@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>逻辑判断笔记整理</title>
+      <link href="/2025/06/23/GWY%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD%E7%AC%94%E8%AE%B0/"/>
+      <url>/2025/06/23/GWY%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p><br/></p><p><spanstyle="color: orange;">前推后和后推前，其实本质上是重要的词在后面。</span></p><p><span style="color: #ff0000;">不重要的 -&gt; 重要的。</span></p><h2 id="前推后">前推后</h2><ul><li><p><strong>如果 ... ，那么 ...</strong></p></li><li><p><strong>若 ... ，则 ...</strong></p></li><li><p><strong>只要 ... ，就 ...</strong></p></li><li><p><strong>所有 ... ，都 ...</strong></p></li><li><p><strong>为了 ... ，一定 ...</strong></p></li><li><p><strong>... 是 ... 的充分条件</strong></p></li></ul><p><spanstyle="color: #ff0000;">速记：如果只要就，若凡则所有都，一定必须是充分。</span></p><p><strong>A -&gt; B = -B -&gt; -A</strong></p><p><br/></p><h2 id="后推前">后推前</h2><ul><li><strong>只有 ... 才 ...</strong></li><li><strong>不 ... 不 ...</strong></li><li><strong>除非 ... 否则不 ...</strong></li><li><strong>... 是 ...的基础/假设/前提/关键</strong>（谁必不可少谁在后）</li><li><strong>... 是 ... 的必要条件/必不可少的条件</strong></li></ul><p><br/></p><h2 id="且与或">"且"与"或"</h2><p><strong>A且B ： 和、并且、又、而且、虽然 ... 但是 ...</strong></p><p><strong>A或B ： 或、A和B至少有一个</strong></p><p><br/></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> GWY笔记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2025模考大赛国考(地市级)第二十一季</title>
       <link href="/2025/06/15/2025%E6%A8%A1%E8%80%83%E5%A4%A7%E8%B5%9B(%E5%9C%B0%E5%B8%82%E7%BA%A7)%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E5%AD%A3/"/>
       <url>/2025/06/15/2025%E6%A8%A1%E8%80%83%E5%A4%A7%E8%B5%9B(%E5%9C%B0%E5%B8%82%E7%BA%A7)%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E5%AD%A3/</url>
@@ -951,9 +970,9 @@
       
       <categories>
           
-          <category> Java </category>
-          
           <category> HTML </category>
+          
+          <category> Java </category>
           
       </categories>
       
