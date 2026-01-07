@@ -1,8 +1,14 @@
+/* Font Awesome CDN - using for title prefix icon */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Legacy iconfont support (if needed) */
 @font-face {
   font-family: "iconfont"; /* Project id 4727561 */
-  src: url('//at.alicdn.com/t/c/font_4727561_o50f8o0895.woff2?t=1748359127630') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4727561_o50f8o0895.woff?t=1748359127630') format('woff'),
-       url('//at.alicdn.com/t/c/font_4727561_o50f8o0895.ttf?t=1748359127630') format('truetype');
+  /* Color fonts - updated URL or use local fallback */
+  src: 
+       url('https://at.alicdn.com/t/c/font_4727561_kotr8j9mkkl.woff2?t=1767786967714') format('woff2'),
+       url('https://at.alicdn.com/t/c/font_4727561_kotr8j9mkkl.woff?t=1767786967714') format('woff'),
+       url('https://at.alicdn.com/t/c/font_4727561_kotr8j9mkkl.ttf?t=1767786967714') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +17,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-paobuji:before {
+  content: "\101ea";
 }
 
 .icon-bijiben1:before {
